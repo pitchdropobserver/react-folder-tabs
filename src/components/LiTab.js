@@ -6,10 +6,11 @@ const LiTab = styled.li`
 	background: ${p => p.isSelected ? p.bgColorSelected : p.bgColorUnselected};
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	display: inline-block;
-	position:relative;
-	z-index:  ${p => p.isSelected ? 999 : p.tabIndex};
-	color:  ${p => p.isSelected ? p.fontColorSelected : p.fontColorUnselected};
+	position: relative;
+	z-index: ${p => p.isSelected ? 999 : p.tabIndex};
+	color: ${p => p.isSelected ? p.fontColorSelected : p.fontColorUnselected};
 	padding: 0 30px;
+	user-select: none;
 	cursor: pointer;
 	&:before {
 		${getTabBefore}
@@ -26,7 +27,8 @@ export function getTab(props) {
 		fRadius,
 		bgColorSelected,
 		borderWidth,
-		borderColor,
+		borderColorSelected, 
+		borderColorUnselected,
 		pad,
 	} = props
 
@@ -34,7 +36,7 @@ export function getTab(props) {
 		case 'top':
 			return `
 				margin: ${pad}px -${fRadius / 3}px 0px -${fRadius / 3}px;
-				border: ${borderWidth}px solid ${borderColor};
+				border: ${borderWidth}px solid ${isSelected ? borderColorSelected : borderColorUnselected};
 				border-bottom-color: ${isSelected ? bgColorSelected : 'none'};
 				border-top-left-radius: ${fRadius}px;
 				border-top-right-radius: ${fRadius}px;
@@ -42,7 +44,7 @@ export function getTab(props) {
 		case 'bottom':
 			return `
 				margin: 0px -${fRadius / 3}px 0px -${fRadius / 3}px;
-				border: ${borderWidth}px solid ${borderColor};
+				border: ${borderWidth}px solid ${isSelected ? borderColorSelected : borderColorUnselected};
 				border-top-color: ${isSelected ? bgColorSelected : 'none'};
 				border-bottom-left-radius: ${fRadius}px;
 				border-bottom-right-radius: ${fRadius}px;
@@ -59,12 +61,13 @@ function getTabBefore(props) {
 		bgColorSelected,
 		bgColorUnselected,
 		borderWidth,
-		borderColor,
+		borderColorSelected,
+		borderColorUnselected,
 		height,
 	} = props
 	const commonProps = `
 		border-style: solid;
-		border-color: ${borderColor};
+		border-color: ${isSelected ? borderColorSelected : borderColorUnselected};
 		content: "";
 		position: absolute;
 		width: ${fRadius}px;
@@ -75,7 +78,7 @@ function getTabBefore(props) {
 			return `
 				${commonProps}
 				top: ${height - fRadius - borderWidth}px;
-				left: -${fRadius}px;
+				left: -${fRadius + 1}px;
 				border-bottom-right-radius: ${fRadius}px;
 				border-bottom-width: ${borderWidth}px;
 				border-right-width: ${borderWidth}px;
@@ -87,7 +90,7 @@ function getTabBefore(props) {
 			return `
 				${commonProps}
 				top: -${borderWidth}px;
-				left: -${fRadius}px;
+				left: -${fRadius + 1}px;
 				border-top-right-radius: ${fRadius}px;
 				border-top-width: ${borderWidth}px;
 				border-right-width: ${borderWidth}px;
@@ -106,12 +109,13 @@ function getTabAfter(props) {
 		bgColorSelected,
 		bgColorUnselected,
 		borderWidth,
-		borderColor,
+		borderColorSelected,
+		borderColorUnselected,
 		height,
 	} = props
 	const commonProps = `
 		border-style: solid;
-		border-color: ${borderColor};
+		border-color: ${isSelected ? borderColorSelected : borderColorUnselected};
 		content: "";
 		position: absolute;
 		width: ${fRadius}px;
@@ -122,7 +126,7 @@ function getTabAfter(props) {
 			return `
 				${commonProps}
 				top: ${height - fRadius - borderWidth}px;
-				right: -${fRadius}px;
+				right: -${fRadius + 1}px;
 				border-bottom-left-radius: ${fRadius}px;
 				border-bottom-width: ${borderWidth}px;
 				border-right-width: 0px;
@@ -134,7 +138,7 @@ function getTabAfter(props) {
 			return `
 				${commonProps}
 				top: -${borderWidth}px;
-				right: -${fRadius}px;
+				right: -${fRadius + 1}px;
 				border-top-left-radius: ${fRadius}px;
 				border-top-width: ${borderWidth}px;
 				border-right-width: 0px;

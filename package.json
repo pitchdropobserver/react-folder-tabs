@@ -14,7 +14,7 @@
 		"build": "webpack --mode production",
 		"deploy": "gh-pages -d examples/lib",
 		"publish-demo": "npm run build && npm run deploy",
-		"prepare": "npm run build-types && npm run build-js",
+		"prepare": "npm run build-types && npm run build-js && echo 'Finished building NPM package'",
 		"build-types": "tsc --emitDeclarationOnly",
 		"build-js": "babel src --out-dir lib --extensions \".js,.ts,.tsx\" --source-maps inline"
 	},

@@ -7,8 +7,6 @@ import UlTabRow from './components/UlTabRow'
 import LiTab from './components/LiTab'
 
 
-// https://css-tricks.com/better-tabs-with-round-out-borders/
-
 interface iTabTemplate {
 	value: string
 	label: string

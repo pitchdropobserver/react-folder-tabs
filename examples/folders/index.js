@@ -35,7 +35,6 @@ const RadioBtn = ({
 	</div>
 )
 
-
 class App extends React.Component {
 	constructor(props) {
 		super(props)
@@ -53,7 +52,7 @@ class App extends React.Component {
 
 	renderViewSourceLink(){
 		return (
-			<a className="source-link" href="https://github.com/pitchdropobserver/react-tabs/blob/master/examples/folders/index.js">
+			<a className="source-link" href="https://github.com/pitchdropobserver/react-folder-tabs/blob/master/examples/folders/index.js">
 				view source
 			</a>
 		)
@@ -124,9 +123,9 @@ class App extends React.Component {
 						font: '14px monospace',
 					}}>
 					{this.renderFolderContentAboveTabs()}
-					<ReactTabs
+					<ReactFolderTabs
 						type={selectedRadioBtnId}
-						className="react-tabs-container"
+						className="folder-tabs-container"
 						onTabSelect={this.handleTabClick}
 						selectedTabId={selectedTabId}
 						tabBorderColorSelected={COLORS.borderSelected}

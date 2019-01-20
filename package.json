@@ -1,5 +1,5 @@
 {
-	"name": "@pdo/react-tabs",
+	"name": "react-folder-tabs",
 	"version": "1.0.0",
 	"description": "",
 	"main": "lib/index.js",
@@ -20,13 +20,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/pitchdropobserver/react-tabs.git"
+		"url": "git+https://github.com/pitchdropobserver/react-folder-tabs.git"
 	},
 	"author": "pitchdropobserver",
 	"license": "MIT",
-	"homepage": "https://github.com/pitchdropobserver/react-tabs#readme",
+	"homepage": "https://github.com/pitchdropobserver/react-folder-tabs#readme",
 	"bugs": {
-		"url": "https://github.com/pitchdropobserver/react-tabs/issues"
+		"url": "https://github.com/pitchdropobserver/react-folder-tabs/issues"
 	},
 	"dependencies": {
 		"@types/react": "^16.7.20",

@@ -19,7 +19,6 @@ const RADIO_BTN_TEMPLATES = [
 const COLORS = {
 	selected: 'rgb(188,220,212)',
 	unselected: 'rgb(175,214,205)',
-	// border: 'rgb(180,180,180)',
 	borderSelected: 'rgb(255,255,255)',
 	borderUnselected: 'rgb(208,240,232)',
 }
@@ -54,7 +53,7 @@ class App extends React.Component {
 
 	renderViewSourceLink(){
 		return (
-			<a className="source-link" href="https://github.com/pitchdropobserver/react-tabs/blob/master/examples/test/index.js">
+			<a className="source-link" href="https://github.com/pitchdropobserver/react-tabs/blob/master/examples/folders/index.js">
 				view source
 			</a>
 		)

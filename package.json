@@ -1,5 +1,5 @@
 {
-	"name": "react-tabs",
+	"name": "@pdo/react-tabs",
 	"version": "1.0.0",
 	"description": "",
 	"main": "lib/index.js",

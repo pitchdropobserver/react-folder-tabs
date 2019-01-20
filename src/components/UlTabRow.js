@@ -49,9 +49,7 @@ function getTabGroupAfter(props) {
 				border-bottom: ${borderWidth}px solid ${borderColorSelected};
 			`
 		case 'bottom':
-			return `
-
-			`
+			return ''
 	}
 }
 

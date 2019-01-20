@@ -28,9 +28,9 @@ interface iState {
 	borderWidth: number
 	tabBgColorSelected: string
 	tabBgColorUnselected: string
-	pad: number
 	fontColorSelected: string
 	fontColorUnselected: string
+	pad: number
 }
 
 
@@ -46,9 +46,9 @@ class ReactTabs extends React.Component<iProps, iState> {
 		borderWidth: 1,
 		tabBgColorSelected: '#fff',
 		tabBgColorUnselected: '#ddd',
-		pad: 10, // cushion space above or below top of tab
 		fontColorSelected: '#444',
 		fontColorUnselected: '#aaa',
+		pad: 10, // cushion space above or below top of tab
 	}
 
 	constructor(props: iProps) {

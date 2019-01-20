@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import ReactTabs from '../../src' 
+import ReactFolderTabs from '../../src' 
 import './styles.css'
 
 const TAB_TEMPLATES = [

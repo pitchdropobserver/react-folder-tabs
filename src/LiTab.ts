@@ -1,17 +1,36 @@
 import styled from 'styled-components'
 
+interface iPropsLi {
+	type: string
+	fRadius: number
+	tabIndex: number
+	isSelected: boolean
+	bgColorSelected: string
+	bgColorUnselected: string
+	borderWidth: number
+	borderColorSelected: string
+	borderColorUnselected: string
+	fontColorSelected: string
+	fontColorUnselected: string
+	height: number
+	pad: number
+}
+
 const LiTab = styled.li`
 	outline: none;
 	${getTab}
-	background: ${p => p.isSelected ? p.bgColorSelected : p.bgColorUnselected};
+	background: ${(p: iPropsLi):string => p.isSelected ? p.bgColorSelected : p.bgColorUnselected};
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	display: inline-block;
 	position: relative;
-	z-index: ${p => p.isSelected ? 999 : p.tabIndex};
-	color: ${p => p.isSelected ? p.fontColorSelected : p.fontColorUnselected};
+	z-index: ${(p: iPropsLi):number => p.isSelected ? 999 : p.tabIndex};
+	color: ${(p: iPropsLi):string => p.isSelected ? p.fontColorSelected : p.fontColorUnselected};
 	padding: 0 30px;
 	user-select: none;
 	cursor: pointer;
+	&:hover {
+		${getTabOnHover}
+	};
 	&:before {
 		${getTabBefore}
 	};
@@ -20,7 +39,7 @@ const LiTab = styled.li`
 	};
 `
 
-export function getTab(props) {
+function getTab(props: iPropsLi): string {
 	const {
 		type,
 		isSelected,
@@ -49,11 +68,19 @@ export function getTab(props) {
 				border-bottom-left-radius: ${fRadius}px;
 				border-bottom-right-radius: ${fRadius}px;
 			`
+		default: 
+			return ''
 	}
 }
 
+function getTabOnHover(props: iPropsLi): string {
+	return `
+		color: ${props.fontColorSelected};
+		background: ${props.bgColorSelected};
+	`
+}
 
-function getTabBefore(props) {
+function getTabBefore(props: iPropsLi): string {
 	const {
 		type,
 		fRadius,
@@ -98,10 +125,12 @@ function getTabBefore(props) {
 				border-left-width: 0px;
 				box-shadow: ${fRadius / 3}px -${fRadius / 3}px 0 ${isSelected ? bgColorSelected : bgColorUnselected};
 			`
+		default:
+			return ''
 	}
 }
 
-function getTabAfter(props) {
+function getTabAfter(props: iPropsLi) {
 	const {
 		type,
 		fRadius,

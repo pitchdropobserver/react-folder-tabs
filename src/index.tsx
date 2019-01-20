@@ -3,8 +3,8 @@ import {
 	collectPropsDelta,
 } from 'brodash'
 
-import UlTabRow from './components/UlTabRow'
-import LiTab from './components/LiTab'
+import UlTabRow from './UlTabRow'
+import LiTab from './LiTab'
 
 
 interface iTabTemplate {

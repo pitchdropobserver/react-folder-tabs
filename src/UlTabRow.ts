@@ -1,13 +1,23 @@
 import styled from 'styled-components'
 
+
+interface iPropsUl {
+	type: string
+	borderWidth: number
+	borderColorSelected: string
+	height: number
+	pad: number
+}
+
+
 const UlTabRow = styled.ul`
 	box-sizing: border-box;
 	text-align: left;
-	padding: 0px ${p => p.pad}px;
+	padding: 0px ${(p: iPropsUl): number => p.pad}px;
 	list-style: none;
 	margin: 0;
-	line-height: ${props => props.height - 2 * props.borderWidth}px;
-	height: ${props => props.height + props.pad}px;
+	line-height: ${(p: iPropsUl): number => p.height - 2 * p.borderWidth}px;
+	height: ${(p: iPropsUl): number => p.height + p.pad}px;
 	overflow: hidden;
 	position: relative;
 	&:before {
@@ -17,11 +27,10 @@ const UlTabRow = styled.ul`
 		${getTabGroupAfter}
 	}
 `
-function getTabGroupBefore(props) {
-	const { type, borderWidth, borderColorSelected, pad } = props
+
+function getTabGroupBefore(props: iPropsUl): string {
+	const { type, borderWidth, borderColorSelected } = props
 	switch (type) {
-		case 'top':
-			return ''
 		case 'bottom':
 			return `
 				position: absolute;
@@ -31,11 +40,13 @@ function getTabGroupBefore(props) {
 				left: 0;
 				z-index: 998;
 				border-top: ${borderWidth}px solid ${borderColorSelected};
-			`
+				`
+		default:
+			return ''
 	}
 }
 
-function getTabGroupAfter(props) {
+function getTabGroupAfter(props: iPropsUl): string {
 	const { type, borderWidth, borderColorSelected, height, pad } = props
 	switch (type) {
 		case 'top':
@@ -48,13 +59,9 @@ function getTabGroupAfter(props) {
 				z-index: 998;
 				border-bottom: ${borderWidth}px solid ${borderColorSelected};
 			`
-		case 'bottom':
+		default:
 			return ''
 	}
 }
-
-
-
-
 
 export default UlTabRow
